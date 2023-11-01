@@ -1,7 +1,7 @@
 /*************************
-* Автор: Китов Д.А. *
-* Дата: 01.11.2023 *
-* Название: Частота повторения букв и двухбуквенных сочетаний *
+* Author: Kitov D.A. *
+* Date: 01.11.2023 *
+* Name: Letters and two-letter combination frequency *
 *************************/
 
 #include <iostream>
@@ -13,20 +13,20 @@ using namespace std;
 
 int main()
 {
-  // Задаем поток fin для ввода из файла input.txt
+  // Set the 'fin' stream for input from the 'input.txt' file
   ifstream fin("input.txt");
 
-  // Вводим весь текст из файла
+  // Enter all the text from the file
   string input, stringToken;
   while(fin >> stringToken) {
     input += stringToken;
   }
 
-  // Создаем два вектора - один хранит все буквы и двухбуквенные сочетания, а второй - их количество (он того же размера)
+  // We create two vectors - one stores all letters and two-letter combinations, and the second - their number (it has the same size)
   vector<string> lettersList;
   vector<int> numbersList;
 
-  // Делаем подсчет каждой буквы в тексте, добавляя ее в вектор, если ее еще не было, и добавляя 1 к количеству, если была
+  // We count each letter in the text, adding it to the vector if it was not already exist, and adding 1 to the number if it was
   for (int inputIndex = 0; inputIndex < input.size(); ++inputIndex) {
     bool letterInList = false;
     int letterIndexInList;
@@ -46,9 +46,9 @@ int main()
 
   }
 
-  // Индекс первого двухбуквенного сочетания в векторе начинается после индекса последней буквы
+  // The index of the first two-letter combination in the vector begins after the index of the last letter
   int lastLetterIndex = lettersList.size();
-  // Подсчитываем каждое двухбуквенное сочетание практически идентичным способом тому, как подсчитывали буквы
+  // We count each two-letter combination in an almost identical way to how we counted letters
   for (int inputIndex = 0; inputIndex < input.size() - 1; ++inputIndex) {
     bool doubleLetterInList = false;
     int doubleLetterIndex;
@@ -67,7 +67,7 @@ int main()
     }
   }
 
-  // Выводим оба вектора
+  // Output both vectors
   cout.setf(ios::left);
   for (int letterIndex = 0; letterIndex < lettersList.size(); ++letterIndex) {
     cout << setw(3) << lettersList[letterIndex] << " ";
