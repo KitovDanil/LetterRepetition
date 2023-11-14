@@ -1,7 +1,7 @@
 /*************************
 * Author: Kitov D.A. *
 * Date: 01.11.2023 *
-* Name: Letters and two-letter combination frequency *
+* Name: Letters and two-letter combination repetition *
 *************************/
 
 #include <iostream>
@@ -26,7 +26,7 @@ int main()
   vector<string> lettersList;
   vector<int> numbersList;
 
-  // We count each letter in the text, adding it to the vector if it was not already exist, and adding 1 to the number if it was
+  // We count each letter in the text, add it to the vector if it was not already exist, and add 1 to the number if it was
   for (int inputIndex = 0; inputIndex < input.size(); ++inputIndex) {
     bool letterInList = false;
     int letterIndexInList;
@@ -67,14 +67,23 @@ int main()
     }
   }
 
+  // We need only repetitions, so we decrease all the numbers by 1
+  for(int numberIndex = 0; numberIndex < numbersList.size(); ++numberIndex) {
+    --numbersList[numberIndex];
+  }
+
   // Output both vectors
   cout.setf(ios::left);
   for (int letterIndex = 0; letterIndex < lettersList.size(); ++letterIndex) {
-    cout << setw(3) << lettersList[letterIndex] << " ";
+    if(numbersList[letterIndex] != 0) {
+      cout << setw(3) << lettersList[letterIndex] << " ";
+    }
   }
   cout << endl;
   for (int numberIndex = 0; numberIndex < numbersList.size(); ++numberIndex) {
-    cout << setw(3) << numbersList[numberIndex] << " ";
+    if(numbersList[numberIndex] != 0) {
+      cout << setw(3) << numbersList[numberIndex] << " ";
+    }
   }
   return 0;
 }
